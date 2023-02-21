@@ -1,20 +1,45 @@
 import styles from "./detail.module.css";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getProducts } from "../../service/fetcher";
 
-export const Detail = () => {
+export const Detail = ({convertPrice} ) => {
+  const {id} = useParams();
+  const [product, setProduct] = useState({});
+  const [count, setCount] = useState(1); // 디테일 페이지 상품 수량
+
+  const handleQuantity= (type) =>{
+    if(type ==='plus'){
+      setCount(count + 1)
+    }else {
+      if (count ===1) return;
+      setCount(count -1)
+    }
+  }
+
+  useEffect(()=>{
+    getProducts().then((data)=>{
+      setProduct(
+        data.data.products.find((product)=> product.id === parseInt(id)));
+    });
+  },[id]);
+  //console.log(product);
   return (
+    product &&(
     <>
       <main className={styles.main}>
         <section className={styles.product}>
           <div className={styles.product_img}>
-            <img src="/images/image002.png" alt="product" />
+            <img src={product.image} alt="product" />
           </div>
         </section>
         <section className={styles.product}>
           <div className={styles.product_info}>
-            <p className={styles.seller_store}>아이돈케어</p>
-            <p className={styles.product_name}>마로네 노트북 파우치</p>
+            <p className={styles.seller_store}>{product.provider}</p>
+            <p className={styles.product_name}>{product.name}</p>
             <span className={styles.price}>
-              1000
+              {convertPrice(product.price + "")}
               <span className={styles.unit}>원</span>
             </span>
           </div>
@@ -30,16 +55,18 @@ export const Detail = () => {
               className={styles.minus}
               src="/images/icon-minus-line.svg"
               alt="minus"
+              onClick={()=> handleQuantity('minus')}
             />
 
             <div className={styles.count}>
-              <span>1</span>
+              <span>{count}</span>
             </div>
 
             <img
               className={styles.plus}
               src="/images/icon-plus-line.svg"
               alt="plus"
+              onClick={()=> handleQuantity('plus')}
             />
           </div>
 
@@ -52,10 +79,10 @@ export const Detail = () => {
 
             <div className={styles.total_info}>
               <span className={styles.total}>
-                총 수량 <span className={styles.total_count}>1개</span>
+                총 수량 <span className={styles.total_count}> {count}개</span>
               </span>
               <span className={styles.total_price}>
-                1000
+                {convertPrice (product.price * count)}
                 <span className={styles.total_unit}>원</span>
               </span>
             </div>
@@ -68,5 +95,6 @@ export const Detail = () => {
         </section>
       </main>
     </>
+    )
   );
 };

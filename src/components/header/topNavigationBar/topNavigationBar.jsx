@@ -12,7 +12,7 @@ export const TopNavigationBar = () => {
         </Link>
         <div className={styles.input_wrap}>
           <input type="text" placeholder="상품을 검색해보세요!" />
-          <img src="/images/icon-search.svg" alt="search" />
+          <img src="/images/1093183.svg" alt="search" />
         </div>
       </div>
 

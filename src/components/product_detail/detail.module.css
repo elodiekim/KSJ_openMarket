@@ -39,18 +39,24 @@
 
 .product_info .seller_store {
   font-size: 18px;
-  line-height: 23px;
+  line-height: 25px;
   color: #767676;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
 }
 
 .product_info .product_name {
   font-size: 36px;
   line-height: 45px;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
+.product_info .product_desc {
+  font-size: 16px;
+  line-height: 10px;
+  color: #000000;
+  margin-bottom: 15px;
+}
 .product_info .price {
   font-size: 36px;
   line-height: 45px;

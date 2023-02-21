@@ -38,6 +38,7 @@ export const Detail = ({convertPrice} ) => {
           <div className={styles.product_info}>
             <p className={styles.seller_store}>{product.provider}</p>
             <p className={styles.product_name}>{product.name}</p>
+            <p className={styles.product_desc}>{product.desc}</p>
             <span className={styles.price}>
               {convertPrice(product.price + "")}
               <span className={styles.unit}>원</span>

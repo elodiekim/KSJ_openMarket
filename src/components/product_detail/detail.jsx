@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getProducts } from "../../service/fetcher";
 
-export const Detail = ({convertPrice} ) => {
+export const Detail = ({convertPrice, cart, setCart} ) => {
   const {id} = useParams();
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1); // 디테일 페이지 상품 수량
@@ -25,6 +25,39 @@ export const Detail = ({convertPrice} ) => {
     });
   },[id]);
   //console.log(product);
+
+  //같은 상품이면 수량만 바꾸기(따로 추가되어서), 중복되는 부분
+  const setQuantity=(id, quantity) =>{
+    const found = cart.filter((el)=> el.id ===id)[0];
+    const idx = cart.indexOf(found)
+    const cartItem= {
+      id: product.id,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      provider: product.provider,
+      quantity: quantity,
+    }
+    setCart([...cart.slice(0,idx), cartItem, ...cart.slice(idx+1)])
+  };
+
+  const handleCart = () =>{
+    const cartItem = {
+      id: product.id,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      provider: product.provider,
+      quantity: count //상품 수량은 count에서 세주고 있다
+    }
+    const found = cart.find((el)=> el.id === cartItem.id);//중복된 물건이면 
+    if(found) setQuantity(cartItem.id, found.quantity +count )
+    else{
+      setCart([...cart, cartItem]) //기존 카트는 유지하고 상품 추가
+    }
+    
+  };
+ // console.log(cart)
   return (
     product &&(
     <>
@@ -91,7 +124,8 @@ export const Detail = ({convertPrice} ) => {
 
           <div className={styles.btn}>
             <button className={styles.btn_buy}>바로 구매</button>
-            <button className={styles.btn_cart}>장바구니</button>
+            <button className={styles.btn_cart} onClick={()=> handleCart()}>
+              장바구니</button>
           </div>
         </section>
       </main>

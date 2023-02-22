@@ -11,7 +11,7 @@
     {
       "id": 2,
       "name": "물방울 플레이트",
-      "provider": "gorigory",
+      "provider": "도자기 연구소",
       "price": 29000,
       "desc":"표면의 유리 방울 형태가 매력인 플레이트입니다. ",
       "image": "/images/image002.png"
@@ -19,7 +19,7 @@
     {
       "id": 3,
       "name": "Tea Pot",
-      "provider": "100-QM",
+      "provider": "300GM",
       "price": 129000,
       "desc":"포트의 중앙에는 얇고 미세한 스테인리스 필터가 있는 포트입니다.",
       "image": "/images/image003.png"
@@ -28,7 +28,7 @@
       "id": 4,
       "name": "북극곰",
       "provider": "목각 제작소",
-      "price": 19000,
+      "price": 14000,
       "desc":"동물 목각인형 시리즈 중 북극곰입니다.",
       "image": "/images/image004.png"
     },
@@ -43,7 +43,7 @@
     {
       "id": 6,
       "name": "Teddy Bear",
-      "provider": "보물보따리",
+      "provider": "bamboo",
       "price": 27000,
       "desc":"실키하고 섬세한 마무리를 보장하는 테디베어입니다.",
       "image": "/images/image006.png"
@@ -52,14 +52,14 @@
       "id": 7,
       "name": "푸들",
       "provider": "목각 제작소",
-      "price": 29000,
+      "price": 14000,
       "desc":"동물 목각인형 시리즈 중 푸들입니다.",
       "image": "/images/image007.png"
     },
     {
       "id": 8,
       "name": "볼",
-      "provider": "우당탕탕",
+      "provider": "도자기 연구소",
       "price": 41000,
       "desc":"천연 원료로 만들어진 다기능성과 실용성을 모두 갖춘 제품입니다.",
       "image": "/images/image008.png"
